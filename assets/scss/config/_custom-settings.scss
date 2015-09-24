@@ -65,46 +65,6 @@ $total-columns: 12;
 $column-gutter: rem-calc(30);
 
 
-// 34. Top Bar
-// - - - - - - - - - - - - - - - - - - - - - - - - -
-
-// Background color for the top bar
-$topbar-bg-color: $white;
-
-// Height and margin
-$topbar-height: rem-calc(64);
-//$topbar-height: 64px;
-
-// Set the link colors and styles for top-level nav
-$topbar-link-color: $navi;
-$topbar-link-color-hover: $navi;
-$topbar-link-color-active: $navi;
-$topbar-link-color-active-hover: $navi;
-$topbar-link-weight: $font-weight-normal;
-$topbar-link-font-size: rem-calc(13);
-$topbar-link-hover-lightness: 0%; // Darken by 10%
-$topbar-link-bg-hover: $white;
-$topbar-link-bg-color-hover: $navi;
-$topbar-link-bg-active: $white;
-$topbar-link-bg-active-hover: $white;
-$topbar-link-font-family: $font-family-sans-serif;
-$topbar-back-link-size: rem-calc(18);
-
-// Style the top bar dropdown elements
-$topbar-dropdown-bg: $white;
-$topbar-dropdown-link-color: $navi;
-$topbar-dropdown-link-bg: $white;
-$topbar-dropdown-toggle-color: $navi;
-
-// Top menu icon styles
-$topbar-menu-link-weight: $font-weight-normal;
-$topbar-menu-link-color: $white;
-$topbar-menu-icon-color: $white;
-$topbar-menu-link-color-toggled: $white;
-$topbar-menu-icon-color-toggled: $white;
-
-
-
 
 
 

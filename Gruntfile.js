@@ -81,7 +81,7 @@ module.exports = function (grunt) {
 					//'assets/components/foundation/js/foundation/foundation.clearing.js',
 					//'assets/components/foundation/js/foundation/foundation.dropdown.js',
 					//'assets/components/foundation/js/foundation/foundation.equalizer.js',
-					'assets/components/foundation/js/foundation/foundation.interchange.js',
+					//'assets/components/foundation/js/foundation/foundation.interchange.js',
 					//'assets/components/foundation/js/foundation/foundation.joyride.js',
 					//'assets/components/foundation/js/foundation/foundation.magellan.js',
 					//'assets/components/foundation/js/foundation/foundation.offcanvas.js',

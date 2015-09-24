@@ -28,4 +28,8 @@ class View {
 
         echo $themeContent;
     }
+
+    public function getPart($name){
+        include BASE_PATH . 'assets/parts/' . $name . '.php';
+    }
 }

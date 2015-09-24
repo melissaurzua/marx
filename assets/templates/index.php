@@ -24,6 +24,7 @@
 
 </head>
 <body>
+<?=$this->getPart('test'); ?>
 
 <h1>Welcome to marx!</h1>
 

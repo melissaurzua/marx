@@ -10,11 +10,10 @@ class Loader {
     }
 
     public function autoload($className) {
-        $parts = explode('_', $className);
-        if (count($parts) > 1 && $parts[0] == 'App'){
+        $path = BASE_PATH . 'library/' . $className . '.php';
 
-        } else {
-            require_once BASE_PATH . 'library/' . $className . '.php';
+        if (file_exists($path)){
+            require_once $path;
         }
 
     }
