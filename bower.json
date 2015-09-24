@@ -1,0 +1,12 @@
+{
+  "name": "marx",
+  "main": [
+    "assets/stylesheets/marx.css",
+    "assets/javascript/marx.js"
+  ],
+  "ignore": [],
+  "dependencies": {
+    "fontawesome": "~4.4.0",
+    "foundation": "zurb/bower-foundation"
+  }
+}

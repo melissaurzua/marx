@@ -1,0 +1,16 @@
+{
+    "name": "marx",
+    "description": "marx is a fintech prototype",
+    "type": "app",
+    "minimum-stability" : "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dino Meyer, Christian Whüthrich, Benjamin Scheurer",
+            "email": "info@glunz.ch"
+        }
+    ],
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
