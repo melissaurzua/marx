@@ -28,13 +28,6 @@ $app = Application::getInstance();
  * CONFIG
  */
 $config = $app->getConfig();
-//$config->root = '/marx';
-$config->db = (object)array(
-    'name' => 'marx',
-    'username' => 'root',
-    'password' => ''
-);
-$config->default = 'home';
 define('ROOT', $config->root);
 
 

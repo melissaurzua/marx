@@ -2,6 +2,9 @@
 *.sass-cache*
 *.log
 .idea
+.idea/**/*
+.idea*
+.idea/*
 node_modules/
 assets/stylesheets/
 assets/components/
