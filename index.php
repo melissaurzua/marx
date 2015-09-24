@@ -11,7 +11,6 @@ ini_set('short_open_tag', 'On');
  */
 define ('BASE_PATH', __DIR__ . '/');
 
-
 /**
  * Loader
  */
