@@ -11,4 +11,6 @@ class DB extends PDO {
             $config->db->password
         );
     }
+
+
 }

@@ -1,2 +1,2 @@
-yeah <?=name;?>!
+yeah <?=$data->name;?>!
 
