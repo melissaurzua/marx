@@ -7,7 +7,9 @@ class ControllerGroupYear extends ControllerGroup {
 	public function execute() {
 		$months = array();
 		for($i = 1; $i < 13; $i++){
+
 			$months[] = (object)array(
+				'month' => $i,
 				'title' => strftime(
 					'%B',
 					mktime(null, null, null, $i, 1, $this->_year)
@@ -15,10 +17,12 @@ class ControllerGroupYear extends ControllerGroup {
 				'type' => $this->getType($i),
 				'members' => $this->calculateMembers(
 					$i,
-					$this->_year
+					$this->_year,
+					true
 				)
 			);
 		}
+
 		$this->getData()->group = $this->_group;
 		$this->getData()->year = $this->_year;
 		$this->getData()->months = $months;

@@ -4,17 +4,20 @@
 
   <div class="small-12 columns group-header">
     <?=$this->getData()->group->name;?>
+		<? $this->getPart('transactions'); ?>
   </div>
 
   <div class="height-wrapper">
     <?php foreach($this->getData()->members as $i => $member) : ?>
       <div class="small-12 columns <?=$member->type;?> group group-<?= $i+1; ?>" style="height:<?=$member->percentage*100;?>%">
-        <div class="member-text">
-          <?=$member->name;?>
-	 		    <?=$member->percentage;?>
-        </div>
+        <?php if($member->percentage>=0.05) : ?>
+          <div class="member-text">
+            <span class="member-name"><?=$member->name;?></span>
+	 		      <span class="member-value"><?=$member->percentage;?></span>
+          </div>
+        <? endif ?>
       </div>
-    <?php endforeach; ?>    
+    <?php endforeach; ?>
 
     <div class="month-list">
       <?php foreach($this->getData()->days as $i => $day) : ?>
@@ -23,11 +26,10 @@
         </li>
       <?php endforeach; ?>
     </div>
-
   </div>
 
-  <?//$this->getPart("nav");?>
-
 </div>
+
+<?$this->getPart("nav");?>
 
 <?// var_dump($this->data) ?>

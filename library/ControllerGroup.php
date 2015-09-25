@@ -42,8 +42,9 @@ class ControllerGroup extends Controller {
 			$this->_group
 		);
 		$this->_transactionModel = $this->_db->getModel('transaction');
-		$this->_month = (int)(isset($this->_request->month) ? $this->_request->mont : date('m'));
+		$this->_month = (int)(isset($this->_request->month) ? $this->_request->month : date('m'));
 		$this->_year = (int)(isset($this->_request->year) ? $this->_request->year : date('Y'));
+
 	}
 
 
@@ -51,11 +52,25 @@ class ControllerGroup extends Controller {
 		/**
 		 * List all transaction
 		 */
-		$this->getData()->transactions = $this->_transactionModel->getByMonth(
+		$transactions = $this->_transactionModel->getByMonth(
 			$this->_group,
 			$this->_month,
 			$this->_year
 		);
+
+		$transactionsByDay = array();
+		$lastDay = null;
+
+		foreach($transactions as $transaction){
+			$day = (int)date('d', strtotime($transaction->date_execution));
+			if (!isset($transactionsByDay[$day])){
+				$transactionsByDay[$day] = (object)array(
+					'day' => $day,
+					'transactions' => array()
+				);
+			}
+			$transactionsByDay[$day]->transactions[] = $transaction;
+		}
 
 
 		/**
@@ -73,6 +88,7 @@ class ControllerGroup extends Controller {
 		/**
 		 * Set Data
 		 */
+		$this->getData()->transactionsByDay = $transactionsByDay;
 		$this->getData()->month = $this->_month;
 		$this->getData()->year = $this->_year;
 		$this->getData()->days = $days;
@@ -81,10 +97,10 @@ class ControllerGroup extends Controller {
 	}
 
 
-	public function calculateMembers($month, $year) {
+	public function calculateMembers($month, $year, $clone = false) {
 		$p = 0;
-		$members = $this->_members;
-		foreach($members as $member){
+		$parsedMembers = array();
+		foreach($this->_members as $member){
 			$total = $this->_transactionModel->getByUserMonth(
 				$member,
 				$month,
@@ -94,13 +110,15 @@ class ControllerGroup extends Controller {
 			$member->type = 'member';
 
 			$p += $member->percentage = $total > 0 ? 1 / $this->_group->limit * $total : 0;
+
+			$parsedMembers[] = $clone ? clone $member: $member;
 		}
 		$budget = new Record();
 		$budget->type = 'balance';
 		$budget->name = 'Guthaben';
 		$budget->percentage = 1 - $p;
-		$members[] = $budget;
-		return $members;
+		$parsedMembers[] = $budget;
+		return $parsedMembers;
 	}
 
 	/**

@@ -23,7 +23,11 @@ class ViewHtml extends View {
 		$this->content = !is_null($this->_controller->getTemplate())
 			? $this->_parseTemplate($this->_controller->getTemplate())
 			: null;
-		return $this->_parseTemplate('index');
+		if (Application::getInstance()->getRequest()->only_controller){
+			return $this->content;
+		} else {
+			return $this->_parseTemplate('index');
+		}
 	}
 
 

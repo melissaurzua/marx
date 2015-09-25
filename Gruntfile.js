@@ -93,7 +93,7 @@ module.exports = function (grunt) {
 					'assets/components/foundation/js/foundation/foundation.topbar.js',
 
           // Include Custom bower plugins
-          //'assets/components/fullpage.js/jquery.fullPage.js',
+          'assets/components/jquery-touchswipe/jquery.touchSwipe.js',
           //'assets/components/isotope/dist/isotope.pkgd.js',
 
 					// Include your own custom scripts (located in the custom folder)

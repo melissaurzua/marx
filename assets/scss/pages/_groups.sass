@@ -8,13 +8,14 @@
     color: $header
     font-size: rem-calc(12)
     text-align: center
-    +transition(all 1s ease)
+    +transition(height 1s ease)
     z-index:9090
+    overflow: hidden
   .group-header.open
     height: 100%
   // Height Wrapper
   .height-wrapper
-    height: calc(100% - 20px)
+    height: calc(100% - 70px)
     display: block
     position: absolute
     margin-top: 20px
@@ -25,14 +26,23 @@
     display: block
     position: relative
     overflow: hidden
-    +transition(all 1s ease)
+    +transition(height 1s ease)
   .member-text
-    font-size: rem-calc(25)
+    text-transform: uppercase
     display: block
     position: absolute
     top: 50%
     height: 34px
+    width: 90%
     margin-top: -17px
+    text-align: center
+    .member-name
+      position: absolute
+      left: 0px
+      bottom: 0px
+      font-size: rem-calc(16)
+    .member-value
+      font-size: rem-calc(25)
   .group-1
     background-color: $group1
   .group-2
