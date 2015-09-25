@@ -2,34 +2,74 @@
 
 class View {
 
-    public function render() {
-        header('Content-type:text/html;charset=utf8');
-        $controller = Application::getInstance()->getController();
+	/**
+	 * @var Controller
+	 */
+	protected $_controller;
 
-        $templateName = $controller->getTemplate();
-        $path = BASE_PATH . 'assets/templates/' . $templateName . '.php';
+	/**
+	 * @var ControllerData;
+	 */
+	public $data;
 
-        $data = $controller->getData();
-        ob_start();
-        include $path;
-        $templateContent = ob_get_contents();
-        ob_end_clean();
+	/**
+	 * @var string
+	 */
+	public $content;
 
-        $data = new ControllerData();
-        $data->controller = $controller;
-        $data->content = $templateContent;
+	/**
+	 * Inits View
+	 */
+	public function init() {
+		$this->_controller = Application::getInstance()->getController();
+		$this->data = $this->_controller->getData();
+	}
 
+	/**
+	 * @return string
+	 */
+	public function render() {
+		return '';
+	}
 
-        ob_start();
-        include BASE_PATH . 'assets/templates/index.php';
-        $themeContent = ob_get_contents();
-        ob_end_clean();
+	/**
+	 * Sends Headers
+	 */
+	public function sendHeaders() {}
 
+	/**
+	 * Includes a part
+	 *
+	 * @param string $name
+	 */
+	public function getPart($name){
+			include BASE_PATH . 'assets/parts/' . $name . '.php';
+	}
 
-        echo $themeContent;
-    }
+	/**
+	 * @return Controller
+	 */
+	public function getController() {
+		return $this->_controller;
+	}
 
-    public function getPart($name){
-        include BASE_PATH . 'assets/parts/' . $name . '.php';
-    }
+	/**
+	 * @return ControllerData
+	 */
+	public function getData() {
+		return $this->data;
+	}
+
+	/**
+	 * @param string $name
+	 * @return string
+	 */
+	protected function _parseTemplate($name){
+		ob_start();
+		include BASE_PATH . 'assets/templates/' . $name . '.php';
+		$data = ob_get_contents();
+		ob_end_clean();
+		return $data;
+	}
+
 }

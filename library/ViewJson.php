@@ -2,10 +2,21 @@
 
 class ViewJson extends View{
 
-	public function render() {
+	/**
+	 * Sends headers
+	 */
+	public function sendHeaders() {
 		header('Content-Type: application/json');
-		echo json_encode(
-			Application::getInstance()->getController()->getData()
+	}
+
+	/**
+	 * Renders View
+	 *
+	 * @return string
+	 */
+	public function render() {
+		return json_encode(
+			$this->getData()
 		);
 	}
 

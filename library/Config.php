@@ -2,6 +2,9 @@
 
 class Config {
 
+	/**
+	 * Load Config
+	 */
 	public function __construct() {
 		$configValues = parse_ini_file(BASE_PATH . 'assets/config/config.ini', true);
 		foreach($configValues as $k => $v){
