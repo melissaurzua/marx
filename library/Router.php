@@ -8,7 +8,28 @@ class Router {
 	public function route() {
 		$controller = $this->getController();
 		Application::getInstance()->setController($controller);
+
+		if (!isset(Application::getInstance()->getSession()->user) ){
+			Application::getInstance()->getSession()->user = Application::getInstance()->getDb()->getModel('user')->find(3);
+		}
+
+		if (!isset(Application::getInstance()->getSession()->user) && $controller->isProtected()){
+			Application::getInstance()->getRouter()->reroute('login');
+		}
+
+		$controller->init();
 		$controller->execute();
+	}
+
+	public function reroute($controllerName, $id = null) {
+		Header(
+			'Location:'
+			. ROOT
+			. 'controller/'
+			. $controllerName
+			. '/'
+			. (!is_null($id) ? 'id/' . $id . '/' : '')
+		);
 	}
 
 	/**
@@ -19,7 +40,11 @@ class Router {
 	public function getController() {
 		$controllerName = null;
 		if(isset(Application::getInstance()->getRequest()->controller)){
-			$controllerName = Application::getInstance()->getRequest()->controller;
+			$controllerNameParts = explode('_', Application::getInstance()->getRequest()->controller);
+			$controllerName = '';
+			foreach($controllerNameParts as $controllerNamePart){
+				$controllerName .= ucfirst($controllerNamePart);
+			}
 		}
 		$className = $this->getControllerName($controllerName);
 		if (!is_null($controllerName) && class_exists($className)){

@@ -18,12 +18,24 @@ class Controller {
 	protected $_db;
 
 	/**
+	 * @var bool
+	 */
+	protected $_protectedAction = true;
+
+	/**
 	 * Init Data
 	 */
 	public function __construct() {
 		$this->_data = new ControllerData();
 		$this->_db = Application::getInstance()->getDb();
 		$this->_request = Application::getInstance()->getRequest();
+	}
+
+	/**
+	 *
+	 */
+	public function init() {
+
 	}
 
 	/**
@@ -45,5 +57,11 @@ class Controller {
 			return null;
 	}
 
+	/**
+	 * @return bool
+	 */
+	public function isProtected() {
+		return $this->_protectedAction;
+	}
 
 }

@@ -61,15 +61,29 @@ class View {
 	}
 
 	/**
+	 * @param $controller
+	 * @param $id
+	 * @return string
+	 */
+	public function uri($controller, $id) {
+		return ROOT . 'controller/' . $controller . '/id/' . $id . '/';
+	}
+
+	public function number($number){
+		$number = number_format($number, 2, '.', '\'');
+		return $number;
+	}
+
+	/**
 	 * @param string $name
 	 * @return string
 	 */
 	protected function _parseTemplate($name){
 		ob_start();
 		include BASE_PATH . 'assets/templates/' . $name . '.php';
-		$data = ob_get_contents();
+		$output = ob_get_contents();
 		ob_end_clean();
-		return $data;
+		return $output;
 	}
 
 }

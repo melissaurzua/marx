@@ -13,7 +13,9 @@ class DB extends PDO {
 	public function __construct() {
 		$config = Application::getInstance()->getConfig();
 		parent::__construct(
-			'mysql:host=localhost;port='
+			'mysql:host='
+				. $config->db->host
+				. ';port='
 				. $config->db->port
 				. ';dbname='
 				. $config->db->name,
@@ -27,11 +29,16 @@ class DB extends PDO {
 
 	/**
 	 * @param string $name
-	 * @return Model
+	 * @return Model|ModelTransaction|ModelGroup
 	 */
 	public function getModel($name){
 		if (!isset($this->_models[$name])){
-			$className = 'Model' . ucfirst($name);
+			$nameParts = explode('_', $name);
+			$name = '';
+			foreach($nameParts as $namePart){
+				$name .= ucfirst($namePart);
+			}
+			$className = 'Model' . $name;
 			if (!class_exists($className)){
 				$className = 'Model';
 			}

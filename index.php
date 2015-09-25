@@ -5,6 +5,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 ini_set('short_open_tag', 'On');
+setlocale(LC_ALL, 'ch_De');
 
 /**
  * Runtime Constants

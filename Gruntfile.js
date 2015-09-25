@@ -136,14 +136,14 @@ module.exports = function (grunt) {
 				options: {
 					livereload: true
 				}
-			},
-
-			all: {
-				files: '**/*.php',
-				options: {
-					livereload: true
-				}
 			}
+
+			// all: {
+			// 	files: '**/*.php',
+			// 	options: {
+			// 		livereload: true
+			// 	}
+			// }
 
 		}
 	});

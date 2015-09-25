@@ -1,0 +1,69 @@
+// Groups
+.groups
+  height: 100vh
+  display: block
+  .group-header
+    height: 20px
+    background-color: $dark
+    color: $header
+    font-size: rem-calc(12)
+    text-align: center
+    +transition(all 1s ease)
+    z-index:9090
+  .group-header.open
+    height: 100%
+  // Height Wrapper
+  .height-wrapper
+    height: calc(100% - 20px)
+    display: block
+    position: absolute
+    margin-top: 20px
+    width: 100%
+    z-index: 5050
+  // Groups Style
+  .group
+    display: block
+    position: relative
+    overflow: hidden
+    +transition(all 1s ease)
+  .member-text
+    font-size: rem-calc(25)
+    display: block
+    position: absolute
+    top: 50%
+    height: 34px
+    margin-top: -17px
+  .group-1
+    background-color: $group1
+  .group-2
+    background-color: $group2
+  .group-3
+    background-color: $group3
+  .group-4
+    background-color: $group4
+  .balance
+    background-color: $good
+
+.month-list
+  display: block
+  position: absolute
+  height: calc(100% - 10px)
+  right: 15px
+  top: 5px
+  font-size: 2.05vh
+  +brown-light()
+  li
+    list-style: none
+    width: 3.5vh
+    +round(30px, 30px, 30px, 30px)
+    padding-left: 0.4vh
+  li.active
+    border: 1px solid $white
+
+
+
+
+
+
+
+
