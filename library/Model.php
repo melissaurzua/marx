@@ -26,7 +26,7 @@ class Model {
 	 * @return Record|null
 	 */
 	public function find($id) {
-		$statement = $this->_db->prepare('SELECT * FROM `' . $this->_name . '` WHERE id = :id');
+		$statement = $this->_db->prepare('SELECT * FROM `' . strtolower($this->_name) . '` WHERE id = :id');
 		$statement->bindValue(':id', $id, PDO::PARAM_INT);
 		$statement->execute();
 		return $statement->rowCount() == 1 ? $statement->fetchObject('Record') : null;

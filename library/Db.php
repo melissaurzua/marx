@@ -32,6 +32,7 @@ class DB extends PDO {
 	 * @return Model|ModelTransaction|ModelGroup
 	 */
 	public function getModel($name){
+		$name = strtolower($name);
 		if (!isset($this->_models[$name])){
 			$nameParts = explode('_', $name);
 			$name = '';
