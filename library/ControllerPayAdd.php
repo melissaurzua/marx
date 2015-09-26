@@ -5,8 +5,7 @@ class ControllerPayAdd extends Controller {
 
 	public function execute() {
 		$cycles = array();
-
-
+		$session = Application::getInstance()->getSession();
 
 		foreach(array('0' => '1X', '1' => 'Woche', '2' => 'Monat', '3' => 'Jahr') as $key => $title){
 			$cycles[] = (object)array(
@@ -17,7 +16,7 @@ class ControllerPayAdd extends Controller {
 
 		$transactionModel = $this->_db->getModel('transaction');
 		if (isset($this->_request->value) && isset($this->_request->title) &&  isset($this->_request->cycle)){
-			$session = Application::getInstance()->getSession();
+
 			$transactionModel->add(
 				$session->group,
 				$session->user,
@@ -28,7 +27,7 @@ class ControllerPayAdd extends Controller {
 			Application::getInstance()->getRouter()->reroute('group', $session->group->id);
 		}
 
-
+		$this->getData()->group = $session->group;
 		$this->getData()->cycles = $cycles;
 	}
 

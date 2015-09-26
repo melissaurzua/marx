@@ -20,10 +20,11 @@ class ViewHtml extends View {
 	 * @return string
 	 */
 	public function render() {
+		$this->data->onlyController = isset(Application::getInstance()->getRequest()->only_controller);
 		$this->content = !is_null($this->_controller->getTemplate())
 			? $this->_parseTemplate($this->_controller->getTemplate())
 			: null;
-		if (Application::getInstance()->getRequest()->only_controller){
+		if ($this->data->onlyController){
 			return $this->content;
 		} else {
 			return $this->_parseTemplate('index');

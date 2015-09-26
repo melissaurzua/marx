@@ -65,8 +65,13 @@ class View {
 	 * @param $id
 	 * @return string
 	 */
-	public function uri($controller, $id, $params = array()) {
-		$uri = ROOT . 'controller/' . $controller . '/id/' . $id . '/';
+	public function uri($controller, $id = null, $params = array()) {
+		$uri = ROOT
+			. 'controller/'
+			. $controller
+			. '/'
+			. (is_null($id) ? '' :  'id/' . $id . '/' );
+
 		foreach($params as $k => $v){
 			$uri .= $k . '/' . $v . '/';
 		}

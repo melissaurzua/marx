@@ -1,0 +1,92 @@
+.hidden-pay
+  position: absolute
+  background:red
+  width:200px
+  height:40px
+  left:50%
+  margin-left:-100px
+  opacity:0
+.pay
+  .navigation
+    .columns:last-child
+      text-align: right
+  .group
+    background:$mint
+    text-align: center
+    padding:20px 0px;
+.pay-intro
+  background:white
+  padding:72px 0px 20px
+  text-align: center
+.pay-value
+  color:$green
+  font-size:80px
+  line-height:1
+.pay-title
+  color:$green
+  font-size:20px
+  padding:20px
+
+.selected
+  .group
+    background:$green
+.cancel
+  background-image: url('../img/buttons/x.svg') !important
+  background-repeat:no-repeat
+  height:42px;
+.submit.disabled, .submit[disabled], .submit.disabled, .submit[disabled]
+  opacity:0.5;
+  background:transparent;
+  color:rgba(0,0,0,0);
+.submit
+  position: relative
+  float:left
+  background:transparent;
+  height:42px;
+  color:rgba(0,0,0,0);
+  background-image: url('../img/buttons/ok.svg') !important
+  background-repeat:no-repeat
+  float:right
+.pay-add
+  .field
+    &,&:focus
+      margin:20px 0px
+      background:transparent
+      border:none
+      box-shadow: none
+      text-align: center
+      font-size:30px
+      height:auto
+      color:white
+  .cycles
+    margin:40px 0px;
+    .cycle-outer
+      display:inline-block;
+      width:23%
+      text-align: center
+      a
+        width:60px
+        height:60px
+        display:inline-block
+        color:rgba(0,0,0,0);
+        background-repeat:no-repeat;
+        &.cycle-0
+          background-image:url('../img/buttons/1x.svg');
+          &.selected
+            background-image:url('../img/buttons/1x_neg.svg');
+        &.cycle-1
+          background-image:url('../img/buttons/tag.svg');
+          &.selected
+            background-image:url('../img/buttons/tag_neg.svg');
+        &.cycle-2
+          background-image:url('../img/buttons/woche.svg');
+          &.selected
+            background-image:url('../img/buttons/woche_neg.svg');
+        &.cycle-3
+          background-image:url('../img/buttons/jahr.svg');
+          &.selected
+            background-image:url('../img/buttons/jahr_neg.svg');
+
+
+
+

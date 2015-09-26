@@ -1,8 +1,56 @@
 .navigation
-  height: 50px
+  height: 70px
   background-color: $dark
   position: fixed
   bottom: 0px
-  z-index: 9080
+  z-index: 9099
+  padding-top: 15px
+.mainnav-open
+  .plus
+    opacity: 0
+  .burger
+    background-image: url('../img/buttons/minus.svg') !important
+.topnav-open
+  //.burger
+  //  opacity: 0
+  //.plus
+  //  -moz-transform: rotate(45deg)
+  //  -webkit-transform: rotate(45deg)
+  //  -o-transform: rotate(45deg)
+  //  -ms-transform: rotate(45deg)
+  //  transform: rotate(45deg)
 
-// Burger
+// Buttons
+.burger
+  background: transparent url('../img/buttons/burger.svg') no-repeat 0 0
+  opacity: 1
+.plus
+  float: right
+  background: transparent url('../img/buttons/plus.svg') no-repeat 0 0
+  opacity: 1
+
+
+// burger
+#mainnav
+  background-color: $dark
+  z-index: 9090
+  display: block
+  position: absolute
+  //bottom: 70px
+  +transition(top 1s ease)
+  top: 1000px
+  height: calc(100vh - 70px)
+#mainnav.open
+  top: 0px !important
+
+.nav-element
+  height: 25%
+  border-bottom: 1px solid rgba(255,255,255,0.2)
+  .nav-text
+    text-transform: uppercase
+    text-align: center
+    height: 22px
+    top: 50%
+    display: block
+    position: relative
+    margin-top: -11px

@@ -21,13 +21,16 @@ class ModelTransaction extends Model {
 	}
 
 
-	public function add($group, $user, $value, $title, $cycle){
+	public function add($group, $user, $value, $title, $cycle, $transactionType = null){
+		if (is_null($transactionType)){
+			$transactionType = ($cycle > 0 ? 3 : 2);
+		}
 		$this->insert(array(
 			'id_group_user' => $this->_db->getModel('group_user')->getId($user->id, $group->id),
-			'id_transaction_type' => ($cycle > 0 ? 3 : 2),
+			'id_transaction_type' => $transactionType,
 			'value' => $value,
-			'date' => time(),
-			'date_execution' => time(),
+			'date' => date('Y-m-d H:i:s'),
+			'date_execution' => date('Y-m-d H:i:s'),
 			'executed' => 0,
 			'title' => $title,
 			'id_transaction_cycle' => ($cycle > 0 ? $cycle : null)
@@ -74,7 +77,7 @@ class ModelTransaction extends Model {
 			WHERE year(`transaction`.`date_execution`) = :year
 				AND  month(`transaction`.`date_execution`) = :month
 				AND `group_user`.`id_group` = :group
-			GROUP BY `transaction`.`date_execution` ASC
+			ORDER BY `transaction`.`date_execution` ASC
 			');
 
 		$statement->bindValue(':month', $month, PDO::PARAM_INT);
@@ -83,6 +86,21 @@ class ModelTransaction extends Model {
 		$statement->execute();
 
 		return $statement->rowCount() > 0 ? $statement->fetchAll(PDO::FETCH_CLASS, 'Record') : array();
+	}
+
+	public function getBalance($group, $start, $end){
+		$statement = $this->_db->prepare('
+			SELECT SUM(`transaction`.`value`) AS `balance`
+			FROM `transaction`
+			LEFT JOIN `group_user` ON `transaction`.`id_group_user` = `group_user`.`id`
+			WHERE date_execution >= :start AND date_execution <= :end
+		');
+
+		$statement->bindParam(':start', $start);
+		$statement->bindParam(':end', $end);
+		$statement->execute();
+
+		return $statement->rowCount() == 1 ? (int)$statement->fetchObject( 'Record')->balance : 0;
 	}
 
 

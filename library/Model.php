@@ -59,9 +59,13 @@ class Model {
 	public function insert($values) {
 		$keys = array();
 		$params = array();
+
+
 		foreach($values as $k => $v){
-			$keys[] = '`' . $k . '`';
-			$params[] = ':' . $k;
+			if (!is_null($v)){
+				$keys[] = '`' . $k . '`';
+				$params[] = '"' . $v . '"';
+			}
 		}
 		$statement = $this->_db->prepare(
 			'INSERT INTO `'
@@ -72,9 +76,6 @@ class Model {
 			. implode(',', $params)
 			. ')'
 		);
-		foreach($values as $k => $v){
-			$statement->bindParam(':' . $k, $v);
-		}
 
 		$statement->execute();
 

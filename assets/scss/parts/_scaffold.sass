@@ -6,5 +6,27 @@ body, html
   +brown-light()
   -webkit-font-smoothing: antialiased
   text-rendering: optimizeLegibility
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+  overflow: hidden
+  height: 100vh
 form
   color: $black
+a
+  color: $lauftext
+  text-decoration: none
+  &:hover, &:active, &:visited
+    color: $lauftext
+    text-decoration: none
+
+// Buttons
+.button
+  border: 0px solid transparent
+  background-color: transparent
+  height: 40px
+  width: 40px
+  display: block
+  position: relative
+  cursor: pointer
+  padding: 0px
+  +transition(all 0.5s ease)
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)

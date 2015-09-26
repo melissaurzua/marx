@@ -1,21 +1,22 @@
-<ul class="transactions">
+<div id="transactions" class="row">
+
 	<? foreach($this->getData()->transactionsByDay as $transactionsDay): ?>
-		<li>
-			<ul class="transactions-day">
+		<div class="transaction-day small-12 columns">
+			<div class="row">
 				<? foreach($transactionsDay->transactions as $transaction): ?>
-					<li>
-						<div class="transactions-day-label">
-							<?=$transactionsDay->day?>
+					<div class="small-12 columns">
+						<div class="row">
+							<div class="small-7 columns transactions-day-info">
+								<?=$transaction->name;?>, <?=$transaction->title;?>
+							</div>
+							<div class="small-5 columns transactions-day-value">
+								<?=$this->number($transaction->value);?>
+							</div>
 						</div>
-						<div class="transactions-day-info">
-							<?=$transaction->name;?>, <?=$transaction->title;?>
-						</div>
-						<div class="transactions-day-value">
-							<?=$this->number($transaction->value);?>
-						</div>
-					</li>
+					</div>
 				<? endforeach; ?>
-			</ul>
-		</li>
+			</div>
+		</div>
 	<? endforeach; ?>
-</ul>
+
+</div>

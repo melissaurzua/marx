@@ -1,24 +1,26 @@
 // Groups
+
+.group-header
+  height: 30px
+  background-color: $dark
+  color: $header
+  font-size: rem-calc(14)
+  text-align: center
+  +transition(height 1s ease)
+  z-index:9080
+  overflow: hidden
+  padding-top: 5px
 .groups
   height: 100vh
   display: block
-  .group-header
-    height: 20px
-    background-color: $dark
-    color: $header
-    font-size: rem-calc(12)
-    text-align: center
-    +transition(height 1s ease)
-    z-index:9090
-    overflow: hidden
   .group-header.open
-    height: 100%
+    height: calc(100vh - 70px)
   // Height Wrapper
   .height-wrapper
-    height: calc(100% - 70px)
+    height: calc(100vh - 100px)
     display: block
     position: absolute
-    margin-top: 20px
+    margin-top: 30px
     width: 100%
     z-index: 5050
   // Groups Style
@@ -27,6 +29,14 @@
     position: relative
     overflow: hidden
     +transition(height 1s ease)
+  .group-text
+    text-transform: uppercase
+    text-align: center
+    height: 22px
+    top: 50%
+    display: block
+    position: relative
+    margin-top: -11px
   .member-text
     text-transform: uppercase
     display: block
@@ -60,15 +70,43 @@
   height: calc(100% - 10px)
   right: 15px
   top: 5px
-  font-size: 2.05vh
+  font-size: 1.8vh
   +brown-light()
   li
     list-style: none
-    width: 3.5vh
+    width: 3.1vh
     +round(30px, 30px, 30px, 30px)
     padding-left: 0.4vh
   li.active
     border: 1px solid $white
+
+#group-outer
+  width:100vw
+  overflow-x:hidden
+  .group-outer-scroller
+    width:300vw
+    left:-100vw
+    height:100vh
+    +transition(all .5s ease)
+    position: relative
+    &.active-0
+      left:0vw
+    &.active-1
+      left:-100vw
+    &.active-2
+      left:-200vw
+  .group-outer-container
+    position: absolute;
+    width:100vw
+    height:100%
+    top:0px;
+    &#group-list
+      left:0px
+    &#group-overview
+      left:100vw;
+    &#group-year
+      left:200vw;
+
 
 
 

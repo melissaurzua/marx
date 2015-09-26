@@ -1,0 +1,26 @@
+.pagination
+  position: absolute
+  bottom: 73px
+  display: block
+  height: 20px
+  width: 40px
+  z-index: 9070
+  left: 50%
+  margin-left: -20px
+  span
+    display: inline-block
+    border: 1px solid $black
+    width: 10px
+    height: 10px
+    +round(10px, 10px, 10px, 10px)
+  span.active
+    background-color: $black
+
+// active
+.active-0 .page0
+  background-color: $black
+.active-1 .page1
+  background-color: $black
+.active-2 .page2
+  background-color: $black
+  

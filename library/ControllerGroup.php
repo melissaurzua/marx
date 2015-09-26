@@ -27,6 +27,9 @@ class ControllerGroup extends Controller {
 	 */
 	protected $_year;
 
+	/**
+	 * @var ModelTransaction
+	 */
 	protected $_transactionModel;
 
 	public function init() {
@@ -36,7 +39,9 @@ class ControllerGroup extends Controller {
 			$this->_request->id
 		);
 
-		Application::getInstance()->getSession()->group = $this->_group;
+		if (!is_null($this->_group)){
+			Application::getInstance()->getSession()->group = $this->_group;
+		}
 
 		$this->_members = $this->_model->getMembers(
 			$this->_group
@@ -94,11 +99,17 @@ class ControllerGroup extends Controller {
 		$this->getData()->days = $days;
 		$this->getData()->members = $this->calculateMembers($this->_month, $this->_year);
 		$this->getData()->group = $this->_group;
+		$this->getData()->update = $this->_month == date('m');
+		$this->getData()->monthTitle =  strftime(
+			'%B',
+			mktime(null, null, null, $this->_month, 1, $this->_year)
+		);
 	}
 
 
 	public function calculateMembers($month, $year, $clone = false) {
 		$p = 0;
+		$v = 0;
 		$parsedMembers = array();
 		foreach($this->_members as $member){
 			$total = $this->_transactionModel->getByUserMonth(
@@ -106,7 +117,7 @@ class ControllerGroup extends Controller {
 				$month,
 				$year
 			);
-			$member->total = $total;
+			$v += $member->total = $total;
 			$member->type = 'member';
 
 			$p += $member->percentage = $total > 0 ? 1 / $this->_group->limit * $total : 0;
@@ -114,8 +125,10 @@ class ControllerGroup extends Controller {
 			$parsedMembers[] = $clone ? clone $member: $member;
 		}
 		$budget = new Record();
+		$budget->id = 0;
 		$budget->type = 'balance';
 		$budget->name = 'Guthaben';
+		$budget->total = $this->_group->limit - $v;
 		$budget->percentage = 1 - $p;
 		$parsedMembers[] = $budget;
 		return $parsedMembers;

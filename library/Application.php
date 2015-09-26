@@ -96,12 +96,13 @@ class Application {
 	protected function _getView() {
 		$defaultViewName = $viewName = 'Html';
 		if (isset($this->getRequest()->response)){
-			$viewName = $this->getRequest()->response;
+			$viewName = ucfirst($this->getRequest()->response);
 		}
-		$viewClassName = 'View' . $viewName;
+
 		if (!class_exists($viewName)){
 			$viewClassName = 'View' . $defaultViewName;
 		}
+		$viewClassName = 'View' . $viewName;
 		return new $viewClassName();
 	}
 
