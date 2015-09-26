@@ -23,6 +23,13 @@ class View {
 	public function init() {
 		$this->_controller = Application::getInstance()->getController();
 		$this->data = $this->_controller->getData();
+		$session = Application::getInstance()->getSession();
+		if (!isset($session->splash)){
+			$session->splash = true;
+			$this->data->showSplash = true;
+		} else {
+			$this->data->showSplash = false;
+		}
 	}
 
 	/**

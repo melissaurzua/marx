@@ -27,6 +27,7 @@ class Controller {
 	 */
 	public function __construct() {
 		$this->_data = new ControllerData();
+		$this->_data->title = '404';
 		$this->_db = Application::getInstance()->getDb();
 		$this->_request = Application::getInstance()->getRequest();
 	}
@@ -54,7 +55,7 @@ class Controller {
 	 * @return null|string
 	 */
 	public function getTemplate() {
-			return null;
+			return 'default';
 	}
 
 	/**

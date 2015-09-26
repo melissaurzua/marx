@@ -27,11 +27,12 @@ class ControllerLogin extends Controller {
 		if (isset($this->_request->password) && !is_null($user)){
 			if ($user->password = md5($this->_request->password)){
 				Application::getInstance()->getSession()->user = $user;
+				Application::getInstance()->getRouter()->reroute('groups');
 			}
 		}
 
 		if (isset(Application::getInstance()->getSession()->user)){
-			Application::getInstance()->getRouter()->reroute('groups');
+			//Application::getInstance()->getRouter()->reroute('groups');
 		}
 
 	}

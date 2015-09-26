@@ -17,7 +17,7 @@ class ControllerPay extends Controller {
 		shuffle($this->_companies);
 		$session = Application::getInstance()->getSession();
 		$defaultGroup = isset($session->group) ? $session->group->id : null;
-		$value = isset($this->_request->value) ? $this->_request->value : rand(30, 70);
+		$value = isset($this->_request->value) ? $this->_request->value : rand(40, 80);
 		$title = isset($this->_request->title) ? $this->_request->title : $this->_companies[0];
 		$idGroup = isset($this->_request->id_group) ? $this->_request->id_group : $defaultGroup;
 

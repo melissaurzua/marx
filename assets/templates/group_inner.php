@@ -13,12 +13,13 @@
 			<? endif ?>
 		</div>
 	<?php endforeach; ?>
-
-	<div class="month-list">
-		<?php foreach($this->getData()->days as $i => $day) : ?>
-			<li class="<?=($day->active ? 'day active' : 'day');?>">
-				<?=$day->name;?>
-			</li>
-		<?php endforeach; ?>
-	</div>
+	<? if (isset($this->data->update) && $this->data->update):?>
+		<div class="month-list">
+			<?php foreach($this->getData()->days as $i => $day) : ?>
+				<li class="<?=($day->active ? 'day active' : 'day');?>">
+					<?=$day->name;?>
+				</li>
+			<?php endforeach; ?>
+		</div>
+	<? endif; ?>
 </div>

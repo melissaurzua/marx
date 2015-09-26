@@ -8,7 +8,13 @@ var actions = [
 ];
 
 var actionContainers = $('.group-outer-container');
-var activeActionIndex = 1;
+var activeActionIndex = $('#group-outer').attr('data-index');
+
+var indexMatches = (document.location.href + '').match('(/index/)([0-9])/');
+if (indexMatches && indexMatches[2]){
+    goToAction(indexMatches[2]);
+}
+
 
 
 $('body').delegate('a', 'click', function(event){
@@ -38,12 +44,13 @@ function update() {
             function(data) {
                 $.each(data.sizes, function(index, size){
                     $('.update .group-id-' + size.id).css('height', size.height + '%');
+                    $('.update .group-id-' + size.id + ' .member-value').text(size.total);
                 });
             }
         );
-        window.setTimeout(update, 1000);
+        window.setTimeout(update, 3000);
     } else {
-        window.setTimeout(update, 1000);
+        window.setTimeout(update, 3000);
     }
 }
 
@@ -107,6 +114,26 @@ function loadDataUri(uri, target, oldIndex, newIndex) {
         $('.pagination').addClass('active-' + newIndex);
         $('.navigation').removeClass('active-' + oldIndex);
         $('.navigation').addClass('active-' + newIndex);
+        var link = $('.add-button');
+        $(link).removeClass('hide');
+        switch(newIndex){
+            case 0 :
+                $(link).attr(
+                    'href',
+                    ROOT + 'controller/shopping_list_add/'
+                );
+                break;
+            case 1 :
+                $(link).attr(
+                    'href',
+                    ROOT + 'controller/pay_add/'
+                );
+                break;
+            case 2 :
+                $(link).addClass('hide');
+                break;
+        }
+
     });
 }
 
@@ -126,6 +153,29 @@ $('#group-outer').swipe({
             case 'right':
                 goToAction(activeActionIndex - 1);
                 break;
+            case 'down':
+                if (!$('.navigation').hasClass('topnav-open')){
+                  toggleList();
+                }
+                break;
+            case 'up':
+                if ($('.navigation').hasClass('topnav-open')){
+                    toggleList();
+                }
+                break;
         }
     }
 });
+
+window.setInterval(
+    function() {
+        $('.splash').addClass('disabled')
+        window.setInterval(
+            function(){
+                $('.splash').remove();
+            },
+            2000
+        )
+    },
+    3000
+);

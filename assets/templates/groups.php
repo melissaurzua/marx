@@ -23,3 +23,5 @@
 
 <?$this->getPart("burger");?>
 <?$this->getPart("nav");?>
+
+<? ($this->getData()->splash ? $this->getPart('splash') : '');?>

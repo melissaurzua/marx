@@ -1,3 +1,5 @@
+.shopping-list
+  color:$dark
 .hidden-pay
   position: absolute
   background:red
@@ -26,6 +28,11 @@
   color:$green
   font-size:20px
   padding:20px
+.pay-nav
+  position: absolute
+  bottom: 0px
+  .navigation
+    position: relative
 
 .selected
   .group
@@ -50,7 +57,7 @@
 .pay-add
   .field
     &,&:focus
-      margin:20px 0px
+      margin:20px 0px 0px 0px
       background:transparent
       border:none
       box-shadow: none
@@ -58,6 +65,8 @@
       font-size:30px
       height:auto
       color:white
+      width: 100%
+      text-transform: uppercase
   .cycles
     margin:40px 0px;
     .cycle-outer

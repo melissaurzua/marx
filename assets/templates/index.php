@@ -12,10 +12,10 @@
   
   <!-- Favicon & Touch Icon -->
   <link rel="icon" href="<?=ROOT;?>assets/img/icons/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?=ROOT;?>assets/img/icons/apple-touch-icon-144x144-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?=ROOT;?>assets/img/icons/apple-touch-icon-114x114-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?=ROOT;?>assets/img/icons/apple-touch-icon-72x72-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="<?=ROOT;?>assets/img/icons/apple-touch-icon-precomposed.png">
+  <link rel="apple-touch-icon" href="<?=ROOT;?>assets/img/icons/touch-icon-iphone.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="<?=ROOT;?>assets/img/icons/touch-icon-ipad.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="<?=ROOT;?>assets/img/icons/touch-icon-iphone-retina.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="<?=ROOT;?>assets/img/icons/touch-icon-ipad-retina.png">
   
   <!-- CSS assets -->
   <link rel="stylesheet" id="main-stylesheet-css" href="<?=ROOT;?>assets/stylesheets/marx.css" type="text/css" media="all">
@@ -24,13 +24,11 @@
   <script type="text/javascript" src="<?=ROOT;?>assets/javascript/vendor/jquery.js"></script>
   <script type="text/javascript" src="<?=ROOT;?>assets/javascript/vendor/fastclick.js"></script>
 
-  <title>MARX</title>
+  <title>Robin</title>
 
 </head>
 <body data-root="<?=ROOT;?>">
-
 	<?=$this->content;?>
-
-<script type="text/javascript" src="<?=ROOT;?>assets/javascript/marx.js"></script>
+	<script type="text/javascript" src="<?=ROOT;?>assets/javascript/marx.js"></script>
 </body>
 </html>

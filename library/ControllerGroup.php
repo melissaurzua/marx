@@ -50,6 +50,8 @@ class ControllerGroup extends Controller {
 		$this->_month = (int)(isset($this->_request->month) ? $this->_request->month : date('m'));
 		$this->_year = (int)(isset($this->_request->year) ? $this->_request->year : date('Y'));
 
+
+
 	}
 
 
@@ -100,6 +102,7 @@ class ControllerGroup extends Controller {
 		$this->getData()->members = $this->calculateMembers($this->_month, $this->_year);
 		$this->getData()->group = $this->_group;
 		$this->getData()->update = $this->_month == date('m');
+		$this->getData()->activeIndex = 1;
 		$this->getData()->monthTitle =  strftime(
 			'%B',
 			mktime(null, null, null, $this->_month, 1, $this->_year)

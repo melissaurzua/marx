@@ -5,8 +5,17 @@
 .transaction-day
   list-style: none
   border-top: 1px solid rgba(255,255,255,0.2)
-  padding: 10px 20px 20px 20px
+  //padding: 10px 20px 20px 20px
+  padding-top: 10px
+  padding-bottom: 10px
   font-size: rem-calc(18)
+
+.transactions-day-day
+  font-size: rem-calc(16)
+  +brown-thin()
+  opacity: 0
+.transactions-day-day:first-child
+  opacity: 1
 
 .transactions-day-info
   text-align: left

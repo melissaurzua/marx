@@ -11,6 +11,7 @@ class ControllerLive extends ControllerGroup {
 		foreach($members as $member){
 			$sizes[] = (object)array(
 				'height' => $member->percentage * 100,
+				'total' => $member->total . '.-',
 				'id' => $member->id
 			);
 		}

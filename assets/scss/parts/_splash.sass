@@ -1,0 +1,18 @@
+.splash
+  position: absolute
+  top:0px
+  left:0px
+  width: 100vw
+  height: 100vh
+  z-index: 9999
+  background-color: $white
+  padding: 110px 40px 0px 40px
+  opacity: 1
+  +transition(opacity 0.5s ease)
+.splash.disabled
+    opacity: 0
+
+#splash-svg
+  background: transparent url('../img/buttons/splash.svg') no-repeat 0 0
+  height: 202px
+  width: 240px
